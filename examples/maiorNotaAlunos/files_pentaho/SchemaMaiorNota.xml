@@ -1,0 +1,24 @@
+<Schema name="maiorNota">
+  <Cube name="Turma" visible="true" cache="true" enabled="true">
+    <Table name="turma" schema="public">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id" highCardinality="false" name="Dimens&#227;o Disciplina">
+      <Hierarchy name="Hierarquia Disciplina" visible="true" hasAll="true" primaryKey="disciplina">
+        <Table name="turma" schema="public">
+        </Table>
+        <Level name="Nome da disciplina" visible="true" column="disciplina" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id" highCardinality="false" name="Dimens&#227;o Aluno">
+      <Hierarchy name="Hierarquia Aluno" visible="true" hasAll="true">
+        <Table name="turma" schema="public">
+        </Table>
+        <Level name="Nome do Aluno" visible="true" column="aluno" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="Maior Nota" column="nota" datatype="Numeric" aggregator="max" visible="true">
+    </Measure>
+  </Cube>
+</Schema>
